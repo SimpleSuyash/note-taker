@@ -1,6 +1,22 @@
 [
     {
-        "title":"Test Title",
-        "text":"Test text"
+        "title":"Get a hair cut.",
+        "text":"At Hair Heaven"
+    },
+    {
+        "title":"Attend Express.js Day 2 Class",
+        "text":"Thursday,01/02/2024 06:00pm"
+    },
+    {
+        "title":"Discuss baby's surgery with my wife ",
+        "text":"show her all the cost quotes"
+    },
+    {
+        "title":"Call ENT Clinic to go ahead with surgery.",
+        "text":"call: 93802470"
+    },
+    {
+        "title":"Go groceries.",
+        "text":"Buy milk, eggs, and fruits"
     }
 ]

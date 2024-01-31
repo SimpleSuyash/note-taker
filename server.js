@@ -1,12 +1,27 @@
+// Import Express.js
 const express = require("express");
+// Import built-in Node.js package 'path' to resolve path of files that are located on the server
+const path = require("node:path");
+const notes = require("./routes/notes");
+// Specify on which port the Express.js server will run
 const PORT = process.env.PORT || 3001;
+// Initialize an instance of Express.js
 const app = express();
-app.use(express.static('public'));
-/*
+
+// Static middleware pointing to the public folder
+app.use(express.static("public"));
+// app.use(express.json());
+app.use("/api/notes", notes);
+
+// Create Express.js routes for default '/', '/notes'  endpoints
 app.get("/", (req, res)=>{
-    res.send("<h1>Hello World!!</h1>")
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
-*/
+
+app.get("/notes", (req, res)=>{
+    res.sendFile(path.join(__dirname, 'public/notes.html'));
+});
+// listen() method is responsible for listening for incoming connections on the specified port 
 app.listen(PORT, () =>
     console.log(`Note Taker app listening at http://localhost:${PORT}`)
 );
