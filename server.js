@@ -1,7 +1,7 @@
 // Import Express.js
 const express = require("express");
 // Import built-in Node.js package 'path' to resolve path of files that are located on the server
-const path = require("node:path");
+const path = require("path");
 const notes = require("./routes/api/notes");
 // Specify on which port the Express.js server will run
 const PORT = process.env.PORT || 3001;
