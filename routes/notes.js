@@ -1,29 +1,38 @@
 // Import Express.js, pody-parser
 const express = require("express");
-const bodyParser = require("body-parser");
-const noteData = require("../../db/db.json");
-const uuid = require("../../helpers/uuid");
+const noteData = require("../db/db.json");
+const uuid = require("../helpers/uuid");
 //importing built-in node modules
 const fs = require("node:fs");
 
+//Colored symbols for various log levels
+//includes info, success, warning and error
+const logSymbols = require("log-symbols");
+//importing fsutils.js
+const fsUtils = require("../helpers/fsUtils");
+
 const router = express.Router();
 
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({extended: false}));
+
 
 //GET request for notes
 router.get("/",(req,res)=> {
+    // const noteData= fsUtils.readFromFile("./db/db.json");
     //send as array of list of notes
     res.status(200).json(noteData);
+    /*
     // Log our request to the terminal
     console.info(`${req.method} request received to get notes`);
+    */
 
 });
 
 //POST request to add a note
 router.post("/",(req,res)=>{
+    /*
     // Log that a POST request was received
     console.info(`${req.method} request received to add a note`);
+    */
 
     // Destructuring assignment for the items in req.body
     const {title, text} = req.body;
@@ -40,7 +49,7 @@ router.post("/",(req,res)=>{
         //getting currently existing notes
         fs.readFile("./db/db.json", "utf8", (err, data)=>{
             if(err){
-                console.error(err);
+                console.error(`${logSymbols.error}`, `\x1b[3;31m${err}\x1b[0m`);
             }else{
                 //converting string data from db.json to JSON obj
                 const parsedNotes = JSON.parse(data);
@@ -51,8 +60,8 @@ router.post("/",(req,res)=>{
                 //writing the updated notes list to the db.json file
                 fs.writeFile("./db/db.json", stringifiedNotes, writeErr=>{
                     writeErr
-                        ? console.error(writeErr)
-                        : console.info(`The new note with id ${newNote.id} added to the notes!`)
+                        ? console.error(`${logSymbols.error}`, `\x1b[3;31m${writeErr}\x1b[0m`)
+                        : console.info(`${logSymbols.success}`,`\x1b[3;92mThe new note with id ${newNote.id} has been added to the notes!\x1b[0m`)
                 });
             }
         });
@@ -62,7 +71,8 @@ router.post("/",(req,res)=>{
             status: "Success",
             body: newNote
         };
-        console.log(response)
+        console.log(`${logSymbols.info}`, response);
+        // console.log(response);
         res.status(201).json(response);
     // when any of the madatory fields such as title and text are empty or undefined
     }else{
@@ -72,9 +82,10 @@ router.post("/",(req,res)=>{
 
 //put request to update note
 router.put("/",(req,res)=>{
+    /*
     // Log that a PUT request was received
     console.info(`${req.method} request received to add a note`);
-
+    */
     // Destructuring assignment for the items in req.body
     const {id, title, text} = req.body;
     // If all the required properties are present
@@ -108,8 +119,8 @@ router.put("/",(req,res)=>{
                 //writing the updated notes list to the db.json file
                 fs.writeFile("./db/db.json", stringifiedNotes, writeErr=>{
                     writeErr
-                        ? console.error(writeErr)
-                        : console.info(`The new note with id ${newNote.id} is updated in the notes!`)
+                        ? console.error(`${logSymbols.error}`, `\x1b[3;31m${writeErr}\x1b[0m`)
+                        : console.info(`${logSymbols.success}`,`\x1b[3;92mThe new note with id ${newNote.id} has been updated in the notes!\x1b[0m`)
                 });
             }
         });
@@ -119,7 +130,7 @@ router.put("/",(req,res)=>{
             status: "Success",
             body: newNote
         };
-        console.log(response)
+        console.log(`${logSymbols.info}`, response)
         res.status(201).json(response);
     // when any of the madatory fields such as title and text are empty or undefined
     }else{
@@ -127,9 +138,10 @@ router.put("/",(req,res)=>{
     }
 });
 router.delete("/:id",(req,res)=>{
+    /*
     // Log that a DELETE request was received
     console.info(`${req.method} request received to remove a note`);
-
+    */
     const id = req.params.id;
     if(id){
         //getting currently existing notes
@@ -142,7 +154,7 @@ router.delete("/:id",(req,res)=>{
                 //when the req parameter id and one of the existing notes' id match
                 //filter out the matching item
                 const filteredNotes=parsedNotes.filter(note =>{
-                    console.log(`note.id ${note.id}, id ${id}`);
+                    // console.log(`note.id ${note.id}, id ${id}`);
                     if(note.id === Number(id)){
                         return false;
                     }else{
@@ -155,17 +167,17 @@ router.delete("/:id",(req,res)=>{
                 //writing the updated notes list to the db.json file
                 fs.writeFile("./db/db.json", stringifiedNotes, writeErr=>{
                     writeErr
-                        ? console.error(writeErr)
-                        : console.info(`The new note with id ${id} is deleted from the notes!`)
+                        ? console.error(`${logSymbols.error}`, `\x1b[3;31m${writeErr}\x1b[0m`)
+                        : console.info(`${logSymbols.success}`,`\x1b[3;92mThe new note with id ${id} has been deleted from the notes!\x1b[0m`)
                 });
             }
         });
         //creating response obj
         const response = {
             status: "Success",
-            body: `The new note with id ${id} is deleted from the notes!`
+            body: `The new note with id ${id} has been deleted from the notes!`
         };
-        console.log(response)
+        console.log(`${logSymbols.info}`, response)
         res.status(201).json(response);
     // when id is undefined
     }else{

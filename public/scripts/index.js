@@ -124,7 +124,7 @@ const handleNoteDelete = (e) => {
     activeNote = {};
   }
 
-  deleteNote(noteId).catch(res.json()).then((data) => {
+  deleteNote(noteId).then(res =>res.json()).then((data) => {
     alert(`${data.body}`);
     getAndRenderNotes();
     renderActiveNote();
