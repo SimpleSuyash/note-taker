@@ -23,7 +23,7 @@ app.get("/notes", (req, res)=>{
     res.sendFile(path.join(__dirname, 'public/notes.html'));
 });
 // listen() method is responsible for listening for incoming connections on the specified port 
-app.set
+// app.set
 app.listen(PORT, () =>
     console.log(`Note Taker app listening at http://localhost:${PORT}`)
 );
