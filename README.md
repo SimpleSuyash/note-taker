@@ -91,7 +91,7 @@ Screenshot showing notes page
 
 ## Demo
 
-https://github.com/SimpleSuyash/note-taker/public/assets/demo.mp4
+https://github.com/SimpleSuyash/note-taker/public/assets/video/demo.mp4
 
 ## Deployed App    
 [Please click to open the live app deployed to Heroku.](https://simplesuyash-note-taker-4a1f4afec235.herokuapp.com/)
