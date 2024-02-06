@@ -59,8 +59,6 @@ After installation of all the required plugins and packages, change the `script`
         "start": "node server",               
         "dev": "nodemon server"                  
     }                  
-    
-
 
 And the `package.json` file should look like below:              
 ![package.json](./public/assets/images/package.png)
@@ -69,7 +67,7 @@ And the `package.json` file should look like below:
 During the development, 
 - Open a new terminal in `Command Prompt` or `Git Bash` or `Visual Studio Code Terminal`
 - Change directory to the parent folder of `server.js`
-- Initiate the `Nodemon` by tying the following, which will automatically restart the server everytime the server-side code is changed.
+- Initiate the `Nodemon` by typing the following, which will automatically restart the server everytime the server-side code is changed.
     ```
     npm run dev
     ```
@@ -91,7 +89,7 @@ Screenshot showing notes page
 
 ## Demo
 
-https://github.com/SimpleSuyash/note-taker/assets/149545043/70a39bc1-fd93-45a1-80d7-a1bce54c6da1
+https://github.com/SimpleSuyash/note-taker/assets/149545043/70a39bc1-fd93-45a1-80d7-a1bce54c6da1                        
 
 ## Deployed App    
 
