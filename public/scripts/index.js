@@ -220,8 +220,6 @@ if (window.location.pathname === '/notes') {
   clearBtn.addEventListener('click', renderActiveNote);
   clearBtn.addEventListener('click', handleFormClear);
   noteForm.addEventListener('input', handleRenderBtns);
-
-
 } 
 
 

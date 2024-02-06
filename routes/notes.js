@@ -8,32 +8,18 @@ const fs = require("node:fs");
 //Colored symbols for various log levels
 //includes info, success, warning and error
 const logSymbols = require("log-symbols");
-//importing fsutils.js
-const fsUtils = require("../helpers/fsUtils");
+
 
 const router = express.Router();
 
-
-
 //GET request for notes
 router.get("/",(req,res)=> {
-    // const noteData= fsUtils.readFromFile("./db/db.json");
-    //send as array of list of notes
+    console.log(`${logSymbols.info}`, noteData);
     res.status(200).json(noteData);
-    /*
-    // Log our request to the terminal
-    console.info(`${req.method} request received to get notes`);
-    */
-
 });
 
 //POST request to add a note
 router.post("/",(req,res)=>{
-    /*
-    // Log that a POST request was received
-    console.info(`${req.method} request received to add a note`);
-    */
-
     // Destructuring assignment for the items in req.body
     const {title, text} = req.body;
     // If all the required properties are present
@@ -82,10 +68,6 @@ router.post("/",(req,res)=>{
 
 //put request to update note
 router.put("/",(req,res)=>{
-    /*
-    // Log that a PUT request was received
-    console.info(`${req.method} request received to add a note`);
-    */
     // Destructuring assignment for the items in req.body
     const {id, title, text} = req.body;
     // If all the required properties are present
@@ -138,10 +120,6 @@ router.put("/",(req,res)=>{
     }
 });
 router.delete("/:id",(req,res)=>{
-    /*
-    // Log that a DELETE request was received
-    console.info(`${req.method} request received to remove a note`);
-    */
     const id = req.params.id;
     if(id){
         //getting currently existing notes
@@ -184,7 +162,6 @@ router.delete("/:id",(req,res)=>{
         res.status(500).json('Error in updating the notes');
     }
 });
-
 
 
 module.exports = router;

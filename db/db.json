@@ -2,12 +2,12 @@
      {
           "id": 54,
           "title": "Have breakfast.",
-          "text": "@8 am"
+          "text": "@8am with avocadoes, bread, a boiled-egg and Juice."
      },
      {
           "id": 41,
           "title": "Drop off kids at the Daycare.",
-          "text": "@8.30"
+          "text": "@8.30 sharp. Make sure they are signed-in."
      },
      {
           "id": 63,
@@ -21,12 +21,12 @@
      },
      {
           "id": 67,
-          "title": "Go groccery.",
+          "title": "Go groceries.",
           "text": "Buy milk, eggs, fruits, etc."
      },
      {
           "id": 85,
-          "title": "Get a haircut.",
-          "text": "Make a booking first."
+          "title": "Get a haircut at Hair Heaven.",
+          "text": "Make a booking first"
      }
 ]
