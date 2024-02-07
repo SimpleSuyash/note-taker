@@ -46,7 +46,7 @@ const saveNote = (note) =>
   });
   
 const updateNote = (note) =>
-  fetch(`/api/notes`, {
+  fetch('/api/notes', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'

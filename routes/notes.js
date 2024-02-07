@@ -139,7 +139,6 @@ router.delete("/:id",(req,res)=>{
                         return true;
                     }
                 });
-                console.log(filteredNotes);
                 //converting JSON obj back to string for saving in db.json
                 const stringifiedNotes = JSON.stringify(filteredNotes);
                 //writing the updated notes list to the db.json file

@@ -3,7 +3,7 @@ const express = require("express");
 // Import built-in Node.js package 'path' to resolve path of files that are located on the server
 const path = require("node:path");
 const notes = require("./routes/notes");
-const { clog } = require('./middleware/clog');
+const { clog } = require("./middleware/clog");
 
 
 // Specify on which port the Express.js server will run
@@ -23,11 +23,11 @@ app.use(express.static("public"));
 // Create Express.js routes for default '/', '/notes'  endpoints
 // viewed at http://localhost:3001
 app.get("/", (req, res)=>{
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
 app.get("/notes", (req, res)=>{
-    res.sendFile(path.join(__dirname, './public/notes.html'));
+    res.sendFile(path.join(__dirname, "public/notes.html"));
 });
 // listen() method is responsible for listening for incoming connections on the specified port 
 // app.set
