@@ -1,6 +1,6 @@
 // Import Express.js, pody-parser
 const express = require("express");
-const noteData = require("../db/db.json");
+// const noteData = require("../db/db.json");
 const uuid = require("../helpers/uuid");
 //importing built-in node modules
 const fs = require("node:fs");
@@ -14,8 +14,21 @@ const router = express.Router();
 
 //GET request for notes
 router.get("/",(req,res)=> {
-    console.log(`${logSymbols.info}`, noteData);
-    res.status(200).json(noteData);
+     //getting currently existing notes
+     fs.readFile("./db/db.json", "utf8", (err, data)=>{
+        if(err){
+            console.error(`${logSymbols.error}`, `\x1b[3;31m${err}\x1b[0m`);
+        }else{
+            //converting string data from db.json to JSON obj
+            const noteData = JSON.parse(data);
+          
+            console.log(`${logSymbols.info}`, noteData);
+            // console.log(response);
+            res.status(201).json(noteData);
+        }
+    });
+    // console.log(`${logSymbols.info}`, noteData);
+    // res.status(200).json(noteData);
 });
 
 //POST request to add a note
