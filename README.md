@@ -93,6 +93,6 @@ https://github.com/SimpleSuyash/note-taker/assets/149545043/70a39bc1-fd93-45a1-8
 
 ## Deployed App    
 
-[Please click to open the live app deployed to Heroku.](https://damp-spire-59122-c01fc9014c94.herokuapp.com/ )
+[Please click to open the live app deployed to Heroku.](https://simplesuyash-note-taker-b716f2594d24.herokuapp.com/)
 
 

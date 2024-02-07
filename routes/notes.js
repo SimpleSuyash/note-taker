@@ -27,8 +27,6 @@ router.get("/",(req,res)=> {
             res.status(201).json(noteData);
         }
     });
-    // console.log(`${logSymbols.info}`, noteData);
-    // res.status(200).json(noteData);
 });
 
 //POST request to add a note
